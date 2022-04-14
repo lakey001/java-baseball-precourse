@@ -15,6 +15,8 @@ public class BaseballGameLogic {
     private static void playGame(BaseballGame baseballGame) {
         while(!baseballGame.isGameEnd()) {
             List<Integer> inputNumbers = GameView.readInputNumbers();
+            baseballGame.proceed(inputNumbers);
+            GameView.printResult(baseballGame);
         }
     }
 }
