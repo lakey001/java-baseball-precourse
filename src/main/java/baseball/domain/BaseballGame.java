@@ -2,6 +2,7 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGame {
@@ -11,8 +12,24 @@ public class BaseballGame {
     private int ballCounter;
 
     public BaseballGame() {
-        this.randomNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        this.randomNumbers = generateRandomNumbers();
         this.gameEnd = false;
+    }
+
+    private List<Integer> generateRandomNumbers() {
+        List<Integer> randomNumbers = new ArrayList<>();
+        while (randomNumbers.size() < 3) {
+            randomNumbers.add(generateUniqueRandomNumber(randomNumbers));
+        }
+        return randomNumbers;
+    }
+
+    private int generateUniqueRandomNumber(List<Integer> randomNumbers) {
+        int random = Randoms.pickNumberInRange(1, 9);
+        while (randomNumbers.contains(random)) {
+            random = Randoms.pickNumberInRange(1, 9);
+        }
+        return random;
     }
 
     public List<Integer> getRandomNumbers() {
