@@ -8,8 +8,12 @@ import java.util.List;
 public class BaseballGameLogic {
 
     public static void start() {
-        BaseballGame baseballGame = new BaseballGame();
-        playGame(baseballGame);
+        boolean playGame = true;
+        while(playGame) {
+            BaseballGame baseballGame = new BaseballGame();
+            playGame(baseballGame);
+            playGame = GameView.readContinueGame();
+        }
     }
 
     private static void playGame(BaseballGame baseballGame) {
@@ -18,5 +22,6 @@ public class BaseballGameLogic {
             baseballGame.proceed(inputNumbers);
             GameView.printResult(baseballGame);
         }
+        GameView.printGameEnd();
     }
 }

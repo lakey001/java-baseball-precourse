@@ -46,7 +46,6 @@ public class GameView {
         if(c1 == c2 || c2 == c3 || c1 == c3){
             return false;
         }
-
         return true;
     }
 
@@ -61,5 +60,21 @@ public class GameView {
             System.out.print("낫싱");
         }
         System.out.print("\n");
+    }
+
+    public static boolean readContinueGame() {
+        String input = Console.readLine();
+        if (input.equals("1")) {
+            return true;
+        }
+        if (input.equals("2")) {
+            return false;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public static void printGameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
