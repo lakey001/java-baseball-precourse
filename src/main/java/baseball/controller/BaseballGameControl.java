@@ -1,7 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.BaseballGame;
-import baseball.view.GameView;
+import baseball.view.GamePrintView;
+import baseball.view.GameReadView;
 
 import java.util.List;
 
@@ -11,17 +12,17 @@ public class BaseballGameControl {
         boolean playGame = true;
         while(playGame) {
             playNewGame();
-            playGame = GameView.readContinueGame();
+            playGame = GameReadView.readContinueGame();
         }
     }
 
     private static void playNewGame() {
         BaseballGame baseballGame = new BaseballGame();
         while(!baseballGame.isGameEnd()) {
-            List<Integer> inputNumbers = GameView.readInputNumbers();
+            List<Integer> inputNumbers = GameReadView.readInputNumbers();
             baseballGame.processInput(inputNumbers);
-            GameView.printProcessResult(baseballGame);
+            GamePrintView.printProcessResult(baseballGame);
         }
-        GameView.printGameEnd();
+        GamePrintView.printGameEnd();
     }
 }
