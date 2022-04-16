@@ -63,7 +63,7 @@ public class GameView {
         return true;
     }
 
-    public static void printResult(BaseballGame baseballGame) {
+    public static void printProcessResult(BaseballGame baseballGame) {
         if(baseballGame.getBallCounter() > 0) {
             System.out.print(baseballGame.getBallCounter() + "볼 ");
         }
@@ -76,6 +76,10 @@ public class GameView {
         System.out.print("\n");
     }
 
+    public static void printGameEnd() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
     public static boolean readContinueGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
@@ -86,9 +90,5 @@ public class GameView {
             return false;
         }
         throw new IllegalArgumentException();
-    }
-
-    public static void printGameEnd() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

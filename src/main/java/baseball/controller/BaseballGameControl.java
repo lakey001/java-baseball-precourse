@@ -5,22 +5,22 @@ import baseball.view.GameView;
 
 import java.util.List;
 
-public class BaseballGameLogic {
+public class BaseballGameControl {
 
     public static void start() {
         boolean playGame = true;
         while(playGame) {
-            BaseballGame baseballGame = new BaseballGame();
-            playGame(baseballGame);
+            playNewGame();
             playGame = GameView.readContinueGame();
         }
     }
 
-    private static void playGame(BaseballGame baseballGame) {
+    private static void playNewGame() {
+        BaseballGame baseballGame = new BaseballGame();
         while(!baseballGame.isGameEnd()) {
             List<Integer> inputNumbers = GameView.readInputNumbers();
-            baseballGame.proceed(inputNumbers);
-            GameView.printResult(baseballGame);
+            baseballGame.processInput(inputNumbers);
+            GameView.printProcessResult(baseballGame);
         }
         GameView.printGameEnd();
     }

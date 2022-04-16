@@ -48,18 +48,18 @@ public class BaseballGame {
         return ballCounter;
     }
 
-    public void proceed(List<Integer> inputNumbers) {
+    public void processInput(List<Integer> inputNumbers) {
         strikeCounter = 0;
         ballCounter = 0;
         for(int i = 0; i < 3; i++){
-            updateGuessState(inputNumbers.get(i), i);
+            updateGuessCounter(inputNumbers.get(i), i);
         }
         if(strikeCounter == 3){
             gameEnd = true;
         }
     }
 
-    private void updateGuessState(Integer number, int idx) {
+    private void updateGuessCounter(Integer number, int idx) {
         if (randomNumbers.get(idx) == number) {
             strikeCounter ++;
             return;
