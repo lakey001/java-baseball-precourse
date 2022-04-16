@@ -26,23 +26,37 @@ public class GameView {
     }
 
     private static boolean validateInput(String input) {
-        if (input.length() != 3) {
-            return false;
+        if(checkValidLength(input)
+            && checkNumbersInValidRange(input)
+            && checkNumbersAreUnique(input)) {
+            return true;
         }
-        if(!isValidThreeDigitNumber(input)){
+        return false;
+    }
+
+    private static boolean checkValidLength(String str) {
+        if(str.length() != 3){
             return false;
         }
         return true;
     }
 
-    private static boolean isValidThreeDigitNumber(String input) {
-        char c1 = input.charAt(0);
-        char c2 = input.charAt(1);
-        char c3 = input.charAt(2);
+    private static boolean checkNumbersInValidRange(String str) {
+        char c1 = str.charAt(0);
+        char c2 = str.charAt(1);
+        char c3 = str.charAt(2);
 
         if(c1 < '1' || c1 > '9' || c2 < '1' || c2 > '9' || c3 < '1' || c3 > '9'){
             return false;
         }
+        return true;
+    }
+
+    private static boolean checkNumbersAreUnique(String str) {
+        char c1 = str.charAt(0);
+        char c2 = str.charAt(1);
+        char c3 = str.charAt(2);
+
         if(c1 == c2 || c2 == c3 || c1 == c3){
             return false;
         }
@@ -63,6 +77,7 @@ public class GameView {
     }
 
     public static boolean readContinueGame() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
@@ -75,6 +90,5 @@ public class GameView {
 
     public static void printGameEnd() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 }
