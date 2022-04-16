@@ -7,7 +7,6 @@ import baseball.view.GameReadView;
 import java.util.List;
 
 public class BaseballGameControl {
-
     public static void start() {
         boolean playGame = true;
         while(playGame) {

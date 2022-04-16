@@ -1,10 +1,6 @@
 package baseball.view;
 
 import baseball.domain.BaseballGame;
-import camp.nextstep.edu.missionutils.Console;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GamePrintView {
     public static void printProcessResult(BaseballGame baseballGame) {

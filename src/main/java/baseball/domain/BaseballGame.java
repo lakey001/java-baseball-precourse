@@ -32,10 +32,6 @@ public class BaseballGame {
         return random;
     }
 
-    public List<Integer> getRandomNumbers() {
-        return randomNumbers;
-    }
-
     public boolean isGameEnd() {
         return gameEnd;
     }
@@ -69,6 +65,4 @@ public class BaseballGame {
             return;
         }
     }
-
-
 }
