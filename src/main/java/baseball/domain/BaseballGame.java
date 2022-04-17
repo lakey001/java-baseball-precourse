@@ -32,18 +32,6 @@ public class BaseballGame {
         return random;
     }
 
-    public boolean isGameEnd() {
-        return gameEnd;
-    }
-
-    public int getStrikeCounter() {
-        return strikeCounter;
-    }
-
-    public int getBallCounter() {
-        return ballCounter;
-    }
-
     public void processInput(List<Integer> inputNumbers) {
         strikeCounter = 0;
         ballCounter = 0;
@@ -64,5 +52,21 @@ public class BaseballGame {
             ballCounter ++;
             return;
         }
+    }
+
+    public List<Integer> getRandomNumbers() {
+        return randomNumbers;
+    }
+
+    public boolean isGameEnd() {
+        return gameEnd;
+    }
+
+    public int getStrikeCounter() {
+        return strikeCounter;
+    }
+
+    public int getBallCounter() {
+        return ballCounter;
     }
 }
