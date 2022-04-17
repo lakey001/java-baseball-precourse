@@ -6,12 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameReadView {
-    public static List<Integer> readInputNumbers() throws IllegalArgumentException {
-        System.out.print("숫자를 입력해주세요 : ");
+    public static final String MESSAGE_DESC_INPUT_NUMBER = "숫자를 입력해주세요 : ";
+    public static final String MESSAGE_DESC_INPUT_CONTINUE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+
+    public static final String MESSAGE_ERROR_INVALID_INPUT_LENGTH = "입력값은 3자리여야 합니다.";
+    public static final String MESSAGE_ERROR_INVALID_INPUT_RANGE = "입력값은 1~9의 숫자여야 합니다.";
+    public static final String MESSAGE_ERROR_INVALID_INPUT_DUPLICATED = "입력값은 중복을 허용하지 않습니다.";
+    public static final String MESSAGE_ERROR_INVALID_INPUT_FOR_GAME_CONTINUE = "입력값은 1 또는 2여야 합니다.";
+
+    public static List<Integer> readInputNumbers(){
+        System.out.print(MESSAGE_DESC_INPUT_NUMBER);
         String input = Console.readLine();
-        if (!validateInput(input)) {
-            throw new IllegalArgumentException("잘못된 입력값입니다");
-        }
+        validateInput(input);
 
         return convertStringToIntegerList(input);
     }
@@ -33,37 +39,37 @@ public class GameReadView {
         return false;
     }
 
-    private static boolean checkValidLength(String str) {
+    private static boolean checkValidLength(String str) throws IllegalArgumentException{
         if(str.length() != 3){
-            return false;
+            throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_LENGTH);
         }
         return true;
     }
 
-    private static boolean checkNumbersInValidRange(String str) {
+    private static boolean checkNumbersInValidRange(String str) throws IllegalArgumentException{
         char c1 = str.charAt(0);
         char c2 = str.charAt(1);
         char c3 = str.charAt(2);
 
         if(c1 < '1' || c1 > '9' || c2 < '1' || c2 > '9' || c3 < '1' || c3 > '9'){
-            return false;
+            throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_RANGE);
         }
         return true;
     }
 
-    private static boolean checkNumbersAreUnique(String str) {
+    private static boolean checkNumbersAreUnique(String str) throws IllegalArgumentException{
         char c1 = str.charAt(0);
         char c2 = str.charAt(1);
         char c3 = str.charAt(2);
 
         if(c1 == c2 || c2 == c3 || c1 == c3){
-            return false;
+            throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_DUPLICATED);
         }
         return true;
     }
 
     public static boolean readContinueGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(MESSAGE_DESC_INPUT_CONTINUE_GAME);
         String input = Console.readLine();
         if (input.equals("1")) {
             return true;
@@ -71,6 +77,6 @@ public class GameReadView {
         if (input.equals("2")) {
             return false;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_FOR_GAME_CONTINUE);
     }
 }
