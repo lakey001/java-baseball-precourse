@@ -36,14 +36,14 @@ public class BaseballGame {
         strikeCounter = 0;
         ballCounter = 0;
         for(int i = 0; i < 3; i++){
-            updateGuessCounter(inputNumbers.get(i), i);
+            updateStrikeBallCounter(inputNumbers.get(i), i);
         }
         if(strikeCounter == 3){
             gameEnd = true;
         }
     }
 
-    private void updateGuessCounter(Integer number, int idx) {
+    private void updateStrikeBallCounter(Integer number, int idx) {
         if (randomNumbers.get(idx) == number) {
             strikeCounter ++;
             return;
