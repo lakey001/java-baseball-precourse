@@ -14,6 +14,9 @@ public class GameReadView {
     public static final String MESSAGE_ERROR_INVALID_INPUT_DUPLICATED = "입력값은 중복을 허용하지 않습니다.";
     public static final String MESSAGE_ERROR_INVALID_INPUT_FOR_GAME_CONTINUE = "입력값은 1 또는 2여야 합니다.";
 
+    public static final String MESSAGE_VALUE_CONTINUE = "1";
+    public static final String MESSAGE_VALUE_EXIT = "2";
+
     public static List<Integer> readInputNumbers(){
         System.out.print(MESSAGE_DESC_INPUT_NUMBER);
         String input = Console.readLine();
@@ -71,10 +74,10 @@ public class GameReadView {
     public static boolean readContinueGame() {
         System.out.println(MESSAGE_DESC_INPUT_CONTINUE_GAME);
         String input = Console.readLine();
-        if (input.equals("1")) {
+        if (input.equals(MESSAGE_VALUE_CONTINUE)) {
             return true;
         }
-        if (input.equals("2")) {
+        if (input.equals(MESSAGE_VALUE_EXIT)) {
             return false;
         }
         throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_FOR_GAME_CONTINUE);
