@@ -71,7 +71,7 @@ public class GameReadView {
         return true;
     }
 
-    public static boolean readContinueGame() {
+    public static boolean readContinueGame() throws IllegalArgumentException{
         System.out.println(MESSAGE_DESC_INPUT_CONTINUE_GAME);
         String input = Console.readLine();
         if (input.equals(MESSAGE_VALUE_CONTINUE)) {
