@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +13,33 @@ public class BaseballGame {
     public BaseballGame() {
         this.randomNumbers = generateRandomNumbers();
         this.gameEnd = false;
+    }
+
+    public List<Integer> getRandomNumbers() {
+        return randomNumbers;
+    }
+
+    public boolean isGameEnd() {
+        return gameEnd;
+    }
+
+    public int getStrikeCounter() {
+        return strikeCounter;
+    }
+
+    public int getBallCounter() {
+        return ballCounter;
+    }
+
+    public void processInput(List<Integer> inputNumbers) {
+        strikeCounter = 0;
+        ballCounter = 0;
+        for(int i = 0; i < 3; i++){
+            updateStrikeBallCounter(inputNumbers.get(i), i);
+        }
+        if(strikeCounter == 3){
+            gameEnd = true;
+        }
     }
 
     private List<Integer> generateRandomNumbers() {
@@ -32,17 +58,6 @@ public class BaseballGame {
         return random;
     }
 
-    public void processInput(List<Integer> inputNumbers) {
-        strikeCounter = 0;
-        ballCounter = 0;
-        for(int i = 0; i < 3; i++){
-            updateStrikeBallCounter(inputNumbers.get(i), i);
-        }
-        if(strikeCounter == 3){
-            gameEnd = true;
-        }
-    }
-
     private void updateStrikeBallCounter(Integer number, int idx) {
         if (randomNumbers.get(idx) == number) {
             strikeCounter ++;
@@ -52,21 +67,5 @@ public class BaseballGame {
             ballCounter ++;
             return;
         }
-    }
-
-    public List<Integer> getRandomNumbers() {
-        return randomNumbers;
-    }
-
-    public boolean isGameEnd() {
-        return gameEnd;
-    }
-
-    public int getStrikeCounter() {
-        return strikeCounter;
-    }
-
-    public int getBallCounter() {
-        return ballCounter;
     }
 }

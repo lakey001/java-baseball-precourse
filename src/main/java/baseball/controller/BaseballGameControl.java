@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.domain.BaseballGame;
 import baseball.view.GamePrintView;
 import baseball.view.GameReadView;
-
 import java.util.List;
 
 public class BaseballGameControl {

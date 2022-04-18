@@ -1,7 +1,6 @@
 package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +24,18 @@ public class GameReadView {
         return convertStringToIntegerList(input);
     }
 
+    public static boolean readContinueGame() throws IllegalArgumentException{
+        System.out.println(MESSAGE_DESC_INPUT_CONTINUE_GAME);
+        String input = Console.readLine();
+        if (input.equals(MESSAGE_VALUE_CONTINUE)) {
+            return true;
+        }
+        if (input.equals(MESSAGE_VALUE_EXIT)) {
+            return false;
+        }
+        throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_FOR_GAME_CONTINUE);
+    }
+
     private static List<Integer> convertStringToIntegerList(String inputString) {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < inputString.length(); i++) {
@@ -35,8 +46,8 @@ public class GameReadView {
 
     private static boolean validateInput(String input) {
         if(checkValidLength(input)
-            && checkNumbersInValidRange(input)
-            && checkNumbersAreUnique(input)) {
+                && checkNumbersInValidRange(input)
+                && checkNumbersAreUnique(input)) {
             return true;
         }
         return false;
@@ -69,17 +80,5 @@ public class GameReadView {
             throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_DUPLICATED);
         }
         return true;
-    }
-
-    public static boolean readContinueGame() throws IllegalArgumentException{
-        System.out.println(MESSAGE_DESC_INPUT_CONTINUE_GAME);
-        String input = Console.readLine();
-        if (input.equals(MESSAGE_VALUE_CONTINUE)) {
-            return true;
-        }
-        if (input.equals(MESSAGE_VALUE_EXIT)) {
-            return false;
-        }
-        throw new IllegalArgumentException(MESSAGE_ERROR_INVALID_INPUT_FOR_GAME_CONTINUE);
     }
 }
